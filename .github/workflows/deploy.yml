@@ -1,0 +1,65 @@
+name: Build and Deploy Signaling Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build App
+        run: npm run build
+
+      - name: Prepare Deployment Artifacts
+        run: |
+          mkdir -p deploy
+          cp -r dist deploy/
+          cp package.json deploy/
+          cp package-lock.json deploy/
+
+      - name: Deploy to Server via SCP
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: "deploy/*"
+          target: "/var/www/noteroom-server"
+          strip_components: 1
+
+      - name: Install Prod Deps & Restart Server with PM2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            # Load NVM and Profile
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            cd /var/www/noteroom-server/
+            
+            # Install production dependencies only
+            npm ci --omit=dev
+            
+            # Restart or start the PM2 process
+            pm2 restart noteroom-server --update-env || pm2 start dist/index.js --name noteroom-server
