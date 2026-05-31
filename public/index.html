@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteRoom — Collaborative Notes Chrome Extension | No Login, No Cloud</title>
+  <meta name="description" content="A free Chrome extension for private, peer-to-peer collaborative notes. No account, no cloud storage. Share a room key and write together in real time.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://noteroom.jayshankarshahu.com">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NoteRoom — Collaborative Notes, No Login Required">
+  <meta property="og:description" content="Peer-to-peer notes for Chrome. Write together in real time. No account, no cloud. Your data stays in your browser.">
+  <meta property="og:image" content="/images/hero-screenshot.png">
+  <meta property="og:url" content="https://noteroom.jayshankarshahu.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NoteRoom — Collaborative Notes, No Login Required">
+  <meta name="twitter:description" content="A free Chrome extension for peer-to-peer notes. No account. No cloud. Share a room key and write together.">
+  <meta name="twitter:image" content="/images/hero-screenshot.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NoteRoom",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "A peer-to-peer collaborative notes Chrome extension. No login, no cloud storage. Share a room key and write together in real time.",
+    "url": "https://noteroom.jayshankarshahu.com",
+    "downloadUrl": "https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- ─── Navbar ──────────────────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="2" width="14" height="18" rx="2" stroke="#d4a847" stroke-width="1.8" fill="none"/>
+        <line x1="7" y1="7" x2="13" y2="7" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="7" y1="10.5" x2="13" y2="10.5" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="7" y1="14" x2="11" y2="14" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="19" cy="18" r="4" stroke="#d4a847" stroke-width="1.8" fill="#191919"/>
+        <circle cx="19" cy="17" r="1.2" fill="#d4a847"/>
+        <path d="M16.5 20.5C17 19 18 18.5 19 18.5C20 18.5 21 19 21.5 20.5" stroke="#d4a847" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span>NoteRoom</span>
+    </a>
+    <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg" target="_blank" rel="noopener" id="nav-cta">Add to Chrome</a>
+  </div>
+</nav>
+
+<!-- ─── Section 1: Hero ────────────────────────────────────────────────── -->
+<section class="hero section" id="hero">
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <span class="pill">CHROME EXTENSION · FREE · NO LOGIN</span>
+      <h1 style="margin: 24px 0 20px;">Write <span class="accent">together</span>.<br>No account needed.</h1>
+      <p class="hero-sub">A peer-to-peer notepad that lives entirely in your browser. Share a room key, edit in real time, keep your notes locally. Nothing touches a server.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg" target="_blank" rel="noopener" id="hero-cta">Add to Chrome — it's free</a>
+        <a class="btn btn-ghost btn-lg" href="#how-it-works" id="hero-scroll">See how it works ↓</a>
+      </div>
+      <p class="hero-proof">Free · Open source · No account · Works offline</p>
+    </div>
+    <div class="hero-visual">
+      <div class="browser-frame tilt-left">
+        <div class="browser-frame__dots"><span></span><span></span><span></span></div>
+        <img src="/images/hero-screenshot.png" alt="NoteRoom extension showing the Planets Party note with sidebar navigation" loading="eager" width="1366" height="912">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 2: Full-Width Screenshot Band ──────────────────────────── -->
+<section class="screenshot-band reveal" id="product-screenshot">
+  <div class="screenshot-band-inner">
+    <div class="screenshot-overlay">
+      <img src="/images/solo-writing.png" alt="NoteRoom extension showing rich text notes with sidebar" loading="lazy" width="1366" height="912">
+      <div class="screenshot-overlay-text">
+        <h2>Your notes. Your browser.<br>No cloud required.</h2>
+      </div>
+    </div>
+    <p class="screenshot-caption">The actual extension. No mockups.</p>
+  </div>
+</section>
+
+<!-- ─── Section 3: Three Core Truths ───────────────────────────────────── -->
+<section class="section reveal" id="core-truths">
+  <div class="container">
+    <p class="section-label--center">THREE THINGS WORTH KNOWING</p>
+    <div class="truths-grid">
+      <div class="truth">
+        <div class="truth-num">01</div>
+        <h3>Your notes never leave your browser.</h3>
+        <p>Everything is saved in Chrome's local storage on your device. We have no database, no cloud, no server holding your writing.</p>
+      </div>
+      <div class="truth">
+        <div class="truth-num">02</div>
+        <h3>Collaboration is direct. Peer to peer.</h3>
+        <p>When you share a note, the content travels between browsers — not through us. A signaling server handles only the connection handshake, never your text.</p>
+      </div>
+      <div class="truth">
+        <div class="truth-num">03</div>
+        <h3>No account. No email. No setup.</h3>
+        <p>Install it, click the icon, start writing. Collaboration requires nothing but a room key you share with the other person. That's everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: Feature — Solo Writing ──────────────────────────────── -->
+<section class="section reveal" id="features">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-text">
+        <p class="section-label">NOTES</p>
+        <h2>A notepad that's always there.</h2>
+        <p>Journals. Meeting logs. Brainstorms. To-do lists. Code snippets. NoteRoom handles all of it. Your notes are stored locally and open instantly — no loading screen, no sync delay, no internet required.</p>
+        <div class="feature-pills">
+          <span class="feature-pill">Works offline</span>
+          <span class="feature-pill">Auto-saves as you type</span>
+          <span class="feature-pill">Rich text formatting</span>
+        </div>
+      </div>
+      <div class="feature-visual">
+        <div class="browser-frame tilt-right">
+          <div class="browser-frame__dots"><span></span><span></span><span></span></div>
+          <img src="/images/solo-writing.png" alt="NoteRoom editor showing a formatted note with rich text content" loading="lazy" width="1366" height="912">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 5: Feature — Room Key Collaboration ────────────────────── -->
+<section class="section section--alt reveal" id="collaboration">
+  <div class="container">
+    <div class="feature-grid">
+      <div class="feature-visual" style="order: 0;">
+        <div class="browser-frame">
+          <div class="browser-frame__dots"><span></span><span></span><span></span></div>
+          <img src="/images/collaboration.png" alt="NoteRoom collaboration panel showing room key soft-frost-35 and connected user Jay" loading="lazy" width="1366" height="912">
+        </div>
+      </div>
+      <div class="feature-text" style="order: 1;">
+        <p class="section-label">COLLABORATION</p>
+        <h2>Share a key.<br>Write together.</h2>
+        <p>Click Share, get a short room key — something like "soft-frost-35". Send it over Slack, WhatsApp, text, or email. The other person enters it in their NoteRoom and your note opens in their browser. Every edit either of you makes appears instantly on the other's screen.</p>
+        <div class="collab-flow">
+          <span class="collab-flow-box">You click Share</span>
+          <span class="collab-flow-arrow">→</span>
+          <span class="collab-flow-box">Room key generated</span>
+          <span class="collab-flow-arrow">→</span>
+          <span class="collab-flow-box">They enter key → synced</span>
+        </div>
+        <div class="feature-pills">
+          <span class="feature-pill">Real-time sync</span>
+          <span class="feature-pill">No participant limit</span>
+          <span class="feature-pill">Key expires in 24h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 6: Feature — Privacy Architecture ──────────────────────── -->
+<section class="section privacy-section reveal" id="privacy">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">PRIVACY</p>
+    <h2>Your notes never see our servers.</h2>
+
+    <div class="arch-diagram">
+      <div class="arch-row">
+        <div class="arch-node arch-node--browser">
+          <div class="arch-node-label">Your browser</div>
+          <div class="arch-node-sub">your notes stay here</div>
+        </div>
+        <div class="arch-arrow-h">
+          <div class="line"></div>
+          <span style="position:absolute; top: -20px; width: 100%; text-align: center; font-size: 11px; color: var(--text-muted); white-space: nowrap; left: 0;">note content, direct</span>
+        </div>
+        <div class="arch-node arch-node--browser">
+          <div class="arch-node-label">Their browser</div>
+          <div class="arch-node-sub">their notes stay here</div>
+        </div>
+      </div>
+
+      <div class="arch-dashed-v"></div>
+
+      <div class="arch-node arch-node--server">
+        <div class="arch-node-label">Signaling server</div>
+        <div class="arch-node-sub">handshake only · no content</div>
+      </div>
+
+      <p class="arch-legend">Solid line = your note content (direct). Dashed line = connection setup only.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">0 bytes</div>
+        <div class="stat-label">of your notes on our servers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">until room keys expire</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">permissions requested</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 7: How It Works ────────────────────────────────────────── -->
+<section class="section section--alt how-section reveal" id="how-it-works">
+  <div class="container">
+    <div class="how-header">
+      <h2>Up and running in 30 seconds.</h2>
+      <p>No account. No configuration. No waiting.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="16" stroke="#d4a847" stroke-width="1.8"/>
+            <line x1="20" y1="8" x2="20" y2="32" stroke="#d4a847" stroke-width="1.5"/>
+            <line x1="8" y1="20" x2="32" y2="20" stroke="#d4a847" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Install from Chrome Web Store</h3>
+        <p>One click. Free. No account required. NoteRoom opens as a full tab when you click the extension icon.</p>
+      </div>
+
+      <div class="step-connector" aria-hidden="true"></div>
+
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="4" width="28" height="32" rx="3" stroke="#d4a847" stroke-width="1.8"/>
+            <line x1="12" y1="12" x2="28" y2="12" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="18" x2="24" y2="18" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="24" x2="20" y2="24" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Write your first note</h3>
+        <p>The editor opens immediately. Write anything — rich text, lists, headings, code. Your note saves automatically to your browser.</p>
+      </div>
+
+      <div class="step-connector" aria-hidden="true"></div>
+
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="20" r="8" stroke="#d4a847" stroke-width="1.8"/>
+            <circle cx="26" cy="20" r="8" stroke="#d4a847" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3>Collaborate with a room key</h3>
+        <p>Click Share, copy the key, send it to anyone. They install NoteRoom, enter the key, and you're both in the same note in real time.</p>
+      </div>
+    </div>
+
+    <div class="how-cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg" target="_blank" rel="noopener" id="how-cta">Add to Chrome — it's free</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 8: Use Cases ───────────────────────────────────────────── -->
+<section class="section reveal" id="use-cases">
+  <div class="container">
+    <div class="usecases-header">
+      <h2>Built for people who value their own writing.</h2>
+    </div>
+    <div class="usecases-grid">
+      <div class="usecase-card" id="uc-teams">
+        <svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="4" stroke="#d4a847" stroke-width="1.5"/><circle cx="19" cy="10" r="4" stroke="#d4a847" stroke-width="1.5"/><path d="M4 22c0-3.3 2.7-6 6-6" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/><path d="M18 22c0-3.3 2.7-6 6-6" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h3>Remote teams</h3>
+        <p>Quick collaborative notes without another account to manage. Share a key in Slack, write together, done.</p>
+      </div>
+      <div class="usecase-card" id="uc-research">
+        <svg viewBox="0 0 28 28" fill="none"><circle cx="12" cy="12" r="7" stroke="#d4a847" stroke-width="1.5"/><line x1="17" y1="17" x2="24" y2="24" stroke="#d4a847" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <h3>Journalists &amp; researchers</h3>
+        <p>Sensitive notes that never touch a company server. Source protection by default.</p>
+      </div>
+      <div class="usecase-card" id="uc-students">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M14 4L2 10l12 6 12-6L14 4z" stroke="#d4a847" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 13v6c0 2 3.6 4 8 4s8-2 8-4v-6" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <h3>Students</h3>
+        <p>Collaborative study notes without needing a school email or shared account.</p>
+      </div>
+      <div class="usecase-card" id="uc-devs">
+        <svg viewBox="0 0 28 28" fill="none"><polyline points="9,8 3,14 9,20" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="19,8 25,14 19,20" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Developers</h3>
+        <p>Full code block support. Write technical docs together without a shared Google account.</p>
+      </div>
+      <div class="usecase-card" id="uc-writers">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M6 24l1-5L20 6l4 4L11 23l-5 1z" stroke="#d4a847" stroke-width="1.5" stroke-linejoin="round"/><line x1="17" y1="9" x2="21" y2="13" stroke="#d4a847" stroke-width="1.2"/></svg>
+        <h3>Writers &amp; journalers</h3>
+        <p>A clean, distraction-free editor with no algorithm deciding what you write next.</p>
+      </div>
+      <div class="usecase-card" id="uc-privacy">
+        <svg viewBox="0 0 28 28" fill="none"><path d="M14 3L4 7v6c0 6.6 4.3 12.3 10 14 5.7-1.7 10-7.4 10-14V7L14 3z" stroke="#d4a847" stroke-width="1.5" stroke-linejoin="round"/><polyline points="10,14 13,17 18,11" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Privacy-first users</h3>
+        <p>For anyone who has ever wondered what a notes app does with their writing. NoteRoom's answer: nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 9: FAQ ─────────────────────────────────────────────────── -->
+<section class="section section--alt faq-section reveal" id="faq">
+  <div class="container">
+    <div class="faq-header"><h2>Questions.</h2></div>
+
+    <div class="faq-item" id="faq-offline">
+      <button class="faq-question" aria-expanded="false">
+        Does NoteRoom work without the internet?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. Solo note-taking is fully offline. Your notes open instantly from local storage. Collaboration requires an internet connection only during the active session.</div></div>
+    </div>
+
+    <div class="faq-item" id="faq-uninstall">
+      <button class="faq-question" aria-expanded="false">
+        What happens to my notes if I uninstall the extension?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Notes are stored in Chrome's local storage. Uninstalling the extension removes that storage. We recommend copying important notes to a text file periodically. Cloud backup is not a feature — by design.</div></div>
+    </div>
+
+    <div class="faq-item" id="faq-participants">
+      <button class="faq-question" aria-expanded="false">
+        Can more than two people collaborate at once?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. Anyone with the room key can join. There's no participant limit.</div></div>
+    </div>
+
+    <div class="faq-item" id="faq-server">
+      <button class="faq-question" aria-expanded="false">
+        What does the signaling server actually see?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Only the connection handshake — not your note content. It stores a mapping of room key to note ID and forgets both after 24 hours.</div></div>
+    </div>
+
+    <div class="faq-item" id="faq-free">
+      <button class="faq-question" aria-expanded="false">
+        Is it really free?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">Yes. No free trial. No freemium limit. No account needed to unlock anything. The full product is free.</div></div>
+    </div>
+
+    <div class="faq-item" id="faq-source">
+      <button class="faq-question" aria-expanded="false">
+        Where is the source code?
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><polyline points="5,8 10,13 15,8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-answer"><div class="faq-answer-inner">It's open source. You can review exactly how it works on <a href="https://github.com/jayshankarshahu/noteroom-extension" target="_blank" rel="noopener" style="color: var(--accent);">GitHub</a>. We have nothing to hide because we store nothing.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 10: Final CTA ──────────────────────────────────────────── -->
+<section class="final-cta section reveal" id="final-cta">
+  <!-- Watermark -->
+  <svg class="final-cta-watermark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="2" width="14" height="18" rx="2" stroke="#d4a847" stroke-width="0.8" fill="none"/>
+    <circle cx="19" cy="18" r="4" stroke="#d4a847" stroke-width="0.8" fill="none"/>
+  </svg>
+  <div class="container">
+    <h2>Your writing belongs to you.<br>Not to a server.</h2>
+    <p>NoteRoom is free, open source, and built around one idea: your notes should stay exactly where you put them.</p>
+    <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg" target="_blank" rel="noopener" id="final-cta-btn">Add to Chrome — it's free</a>
+    <p class="final-cta-proof">Free · No account · Open source · Works offline</p>
+  </div>
+</section>
+
+<!-- ─── Footer ─────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="2" width="14" height="18" rx="2" stroke="#d4a847" stroke-width="1.8" fill="none"/>
+            <circle cx="19" cy="18" r="4" stroke="#d4a847" stroke-width="1.8" fill="#191919"/>
+            <circle cx="19" cy="17" r="1.2" fill="#d4a847"/>
+            <path d="M16.5 20.5C17 19 18 18.5 19 18.5C20 18.5 21 19 21.5 20.5" stroke="#d4a847" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span>NoteRoom</span>
+        </div>
+        <p class="footer-tagline">Peer-to-peer notes for Chrome.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://chromewebstore.google.com/detail/eoolglpleljhbggbaimnfemnjfiofnhg" target="_blank" rel="noopener">Chrome Web Store</a>
+        <a href="https://github.com/jayshankarshahu/noteroom-extension" target="_blank" rel="noopener">GitHub</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">Made by Jayshankar Shahu · <a href="https://jayshankarshahu.com" target="_blank" rel="noopener">jayshankarshahu.com</a></div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>

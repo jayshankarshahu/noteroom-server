@@ -56,6 +56,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve static website
+import path from 'path';
+app.use(express.static(path.join(__dirname, '../public'), { extensions: ['html'] }));
+
 // Health check
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', rooms: rooms.size });
